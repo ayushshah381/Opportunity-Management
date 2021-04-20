@@ -1,0 +1,37 @@
+<!-- <div *ngIf="!user">
+    <button (click)="signInWithGoogle()">Sign in</button>
+</div>
+
+<div *ngIf="user">
+    <p>Hello there! {{user.name | uppercase}}</p>
+    <p>{{user.email}}</p>
+    <button (click)="signOut()">Sign out</button>
+</div> -->
+
+<section *ngIf="!user" class="hero">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="hero-brand"><img alt="Accolite Logo" src="../../assets/Images/accolite_logo.jpeg"></a>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <h1>
+          OPPORTUNITY MANAGEMENT PORTAL
+        </h1>
+
+        <p class="tagline">
+          A portal for Opportunity Management of MS AU 2021
+        </p>
+        <a class="btn btn-full signin" (click)="signInWithGoogle()">SIGN IN</a>
+      </div>
+    </div>
+
+  </section>
+
+  <div *ngIf="user">
+    <p>Hello there! {{user.name | uppercase}}</p>
+    <p>{{user.email}}</p>
+    <button (click)="signOut()">Sign out</button>
+</div>
