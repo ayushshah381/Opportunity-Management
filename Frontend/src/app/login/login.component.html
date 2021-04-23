@@ -16,22 +16,18 @@
         </div>
       </div>
 
-      <div class="col-md-12">
+      <div class="col-md-12 title">
         <h1>
           OPPORTUNITY MANAGEMENT PORTAL
         </h1>
 
         <p class="tagline">
-          A portal for Opportunity Management of MS AU 2021
+          A portal for managing the opportunitites in Morgan Stanley
         </p>
+        
         <a class="btn btn-full signin" (click)="signInWithGoogle()">SIGN IN</a>
       </div>
     </div>
 
   </section>
 
-  <div *ngIf="user">
-    <p>Hello there! {{user.name | uppercase}}</p>
-    <p>{{user.email}}</p>
-    <button (click)="signOut()">Sign out</button>
-</div>

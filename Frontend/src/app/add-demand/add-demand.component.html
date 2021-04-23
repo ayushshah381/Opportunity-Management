@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<br>
+<h2 style="text-align: center;">ADD A NEW DEMAND</h2>
+<br>
+<br>
+<div class="container" style="line-height: 2em;">
+    <form (ngSubmit) = "onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="edName">ED Name</label>
+            <input type="text" class="form-control" [(ngModel)] = "demand.ed_name" id="edName" name="ed_name" placeholder="ED Name">
+          </div>
+          <div class="form-group col-md-4 ml-4">
+            <label for="edMail">ED Email</label>
+            <input type="text" class="form-control" [(ngModel)] = "demand.ed_email" id="edMail" name="ed_email" placeholder="ED Email">
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" [(ngModel)] = "demand.description" id="description" name="description" placeholder="Analyst/Developer/Manager...">
+              </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" [(ngModel)] = "demand.location" id="location" name="location" placeholder="Location">
+          </div>
+          <div class="form-group col-md-4 ml-4">
+            <label for="skills">Skills</label>
+            <input type="text" class="form-control" [(ngModel)] = "demand.skills" id="skills" name="skills" placeholder="Skills">
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="vacancy">Vacancy</label>
+              <input type="int" class="form-control" [(ngModel)] = "demand.vacancy" name="vacancy" id="vacancy">
+            </div>
+            <div class="form-group col-md-2 ml-4">
+              <label for="endDate">End Date</label>
+              <input type="date" class="form-control" [(ngModel)] = "demand.endDate" name="endDate" id="endDate" >
+            </div>
+          </div>
+        
+        <div class="form-row mt-2">
+            <div class="col-md-5">
+
+            </div>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+            <div class="col-md-5">
+
+            </div>
+        </div>
+      </form>
+</div>

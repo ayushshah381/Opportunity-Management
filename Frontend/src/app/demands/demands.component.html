@@ -1,0 +1,45 @@
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ED Name</th>
+            <th>ED Email</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Skills</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let demand of demands" >
+            <td>{{demand.did}}</td>
+            <td>{{demand.ed_name}}</td>
+            <td>{{demand.ed_email}}</td>
+            <td>{{demand.description}}</td>
+            <td>{{demand.location}}</td>
+            <td>{{demand.skills}}</td>
+            <td>
+                <button class = "btn btn-info" (click)="updateDemands(demand.did)"> Update</button>
+                <button class = "btn btn-danger" style="margin-left: 10px" (click)="deleteDemands(demand.did)"> Delete</button>
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                          <button type="button" class="btn btn-primary" (click)="deleteDemands(demand.did)">Yes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                <button class = "btn btn-info" style="margin-left: 10px" (click)="viewDemand(demand.did)"> View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

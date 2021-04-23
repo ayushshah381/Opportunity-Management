@@ -24,6 +24,14 @@ public class DemandRepo {
 		return demandList;
 	}
 	
+	public Demand getDemandById(int id)
+	{
+		Demand demand;
+		String sqlquery = "SELECT * FROM demands WHERE id="+id;
+		demand = jdbctemplate.queryForObject(sqlquery, new DemandRowMapper());
+		return demand;
+	}
+	
 	public int addDemand(Demand d)
 	{
 		String sqlquery = "INSERT INTO DEMANDS(manager_name,manager_email,demand_desc,location,skills,vacancy,endDate) VALUES(?,?,?,?,?,?,?)";

@@ -32,6 +32,13 @@ public class DemandController {
 		return demandList;
 	}
 	
+	@GetMapping(path="{id}")
+	public Demand getDemandById(@PathVariable int id)
+	{
+		Demand d = demandrepo.getDemandById(id);
+		return d;
+	}
+	
 	@PostMapping(path="add",produces=MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public int addDemand(@RequestBody Demand d)

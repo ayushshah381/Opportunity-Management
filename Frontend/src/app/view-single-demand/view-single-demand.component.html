@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="jumbotron">
+        <label for="managername">ED Name:</label>
+        <p id="managername">{{demand.ed_name}}</p>
+
+        <label for="manageremail">ED Email:</label>
+        <p id="manageremail">{{demand.ed_email}}</p>
+
+        <label for="desc">Description:</label>
+        <p id="desc">{{demand.description}}</p>
+
+        <label for="location">Location:</label>
+        <p id="location">{{demand.location}}</p>
+
+        <label for="skills">Skills:</label>
+        <p id="skills">{{demand.skills}}</p>
+
+        <label for="vacancy">Vacancy:</label>
+        <p id="vacancy">{{demand.vacancy}}</p>
+
+        <label for="enddate">End Date:</label>
+        <p id="enddate">{{demand.endDate}}</p>
+
+        <button class="btn btn-info" (click)="onBack()">
+            BACK
+        </button>
+    </div>
+</div>

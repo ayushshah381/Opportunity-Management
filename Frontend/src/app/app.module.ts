@@ -6,17 +6,34 @@ import { AppComponent } from './app.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from "angularx-social-login";
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
+import { DemandsComponent } from './demands/demands.component';
+import { DemandsService } from './demands.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AddDemandComponent } from './add-demand/add-demand.component';
+import { UpdateDemandComponent } from './update-demand/update-demand.component';
+import { ViewSingleDemandComponent } from './view-single-demand/view-single-demand.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    NavbarComponent,
+    DemandsComponent,
+    AddDemandComponent,
+    UpdateDemandComponent,
+    ViewSingleDemandComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -31,7 +48,8 @@ import { LoginComponent } from './login/login.component';
           }
         ]
       } as SocialAuthServiceConfig,
-    }//, LoginService
+    },
+    DemandsService
   ],
   bootstrap: [AppComponent]
 })
