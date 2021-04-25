@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<br>
+<h3 style="text-align: center;">TRENDING NOW</h3>
+<br>
+<br>
+<div class="container">
+        <div class="row">
+          <div class="col">
+                <h6 style="text-align: center;">TRENDING JOINING LOCATIONS</h6>
+                <br>
+                <div style="display: block; width: 500px; height: 500px;">
+                        <canvas baseChart 
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType"
+                        [colors]="barChartColors">
+                      </canvas>
+                </div>
+          </div>
+          <div class="col">
+                <h6 style="text-align: center;">TRENDING SKILLS</h6>
+                <br>
+                <div style="display: block; width: 500px; height: 500px;">
+                        <canvas baseChart 
+                        [datasets]="barChartDataSkills"
+                        [labels]="barChartLabelsSkills"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartTypeSkills"
+                        [colors]="barChartColorsSkills"
+                        >
+                      </canvas>
+                </div>
+          </div>
+        </div>
+</div>

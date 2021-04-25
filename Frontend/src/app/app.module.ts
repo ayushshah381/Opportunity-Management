@@ -1,6 +1,8 @@
+import { ChartsModule, ThemeService } from 'ng2-charts';
+import { TrendsService } from './trends.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddDemandComponent } from './add-demand/add-demand.component';
 import { UpdateDemandComponent } from './update-demand/update-demand.component';
 import { ViewSingleDemandComponent } from './view-single-demand/view-single-demand.component';
+import { TrendsComponent } from './trends/trends.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -26,14 +30,18 @@ import { ViewSingleDemandComponent } from './view-single-demand/view-single-dema
     DemandsComponent,
     AddDemandComponent,
     UpdateDemandComponent,
-    ViewSingleDemandComponent
+    ViewSingleDemandComponent,
+    TrendsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
@@ -49,7 +57,9 @@ import { ViewSingleDemandComponent } from './view-single-demand/view-single-dema
         ]
       } as SocialAuthServiceConfig,
     },
-    DemandsService
+    DemandsService,
+    TrendsService,
+    ThemeService
   ],
   bootstrap: [AppComponent]
 })

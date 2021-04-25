@@ -1,3 +1,4 @@
+import { TrendsComponent } from './trends/trends.component';
 import { ViewSingleDemandComponent } from './view-single-demand/view-single-demand.component';
 import { UpdateDemandComponent } from './update-demand/update-demand.component';
 import { AddDemandComponent } from './add-demand/add-demand.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'home',component:HomeComponent},
   {path: 'addDemand',component:AddDemandComponent},
   {path: 'updateDemand/:id',component:UpdateDemandComponent},
-  {path: 'viewDemand/:id',component:ViewSingleDemandComponent}
+  {path: 'viewDemand/:id',component:ViewSingleDemandComponent},
+  {path: 'trends', component:TrendsComponent}
 ];
 
 @NgModule({

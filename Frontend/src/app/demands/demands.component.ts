@@ -24,7 +24,6 @@ export class DemandsComponent implements OnInit {
     this.mydemandservice.getDemands().subscribe(
       (response: Demand[]) => {
         this.demands = response;
-        console.log(this.demands);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -36,7 +35,6 @@ export class DemandsComponent implements OnInit {
   deleteDemands(id: number): void{
     this.mydemandservice.deleteDemand(id).subscribe(
       (data)=>{
-        console.log(data);
         this.getDemands();
       }
     )
@@ -48,6 +46,27 @@ export class DemandsComponent implements OnInit {
   
   viewDemand(id:number): void{
     this.router.navigate(['viewDemand',id]);
+  }
+
+  searchDemands(key: String): void{
+    const results: Demand[] = [];
+    for(const demand of this.demands)
+    {
+      if(demand.ed_name.toLowerCase().indexOf(key.toLocaleLowerCase()) !== -1 
+      || demand.ed_email.toLowerCase().indexOf(key.toLocaleLowerCase()) !== -1
+      || demand.description.toLowerCase().indexOf(key.toLocaleLowerCase()) !== -1
+      || demand.location.toLowerCase().indexOf(key.toLocaleLowerCase()) !== -1
+      || demand.skills.toLowerCase().indexOf(key.toLocaleLowerCase()) !== -1
+      )
+      {
+        results.push(demand);
+      }
+    }
+    this.demands = results;
+    if(results.length === 0 || !key)
+    {
+      this.getDemands();
+    }
   }
 
 }

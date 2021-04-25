@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 
 <div class="container">
     <div class="jumbotron">
@@ -27,4 +27,23 @@
             BACK
         </button>
     </div>
-</div>
+</div> -->
+
+<app-navbar></app-navbar>
+<br>
+<h3 style="text-align: center;">DEMAND DETAILS</h3>
+<br>
+<ul class="list-group " style="width: 40%; margin-left: 30%">
+    <li class="list-group-item">ED Name: {{demand.ed_name}}</li>
+    <li class="list-group-item">ED Email: {{demand.ed_email}}</li>
+    <li class="list-group-item">Description: {{demand.description}}</li>
+    <li class="list-group-item">Location: {{demand.location}}</li>
+    <li class="list-group-item">Skills: {{demand.skills}}</li>
+    <li class="list-group-item">Vacancy: {{demand.vacancy}}</li>
+    <li class="list-group-item">End Date: {{demand.endDate}}</li>
+  </ul>
+<br>
+<br>
+<button class="btn btn-info" style="margin-left: 47%;" (click)="onBack()">
+    BACK
+</button>

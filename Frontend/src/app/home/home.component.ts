@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   user?: SocialUser;
 
   ngOnInit(): void {
-    console.log(this.user);
+    
     this.authService.authState.subscribe((user) => {
       this.user = user;
     });
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     {
       this.goToLogin();
     }
-    console.log(this.user);
+    
   }
 
   signOut(): void {
