@@ -19,6 +19,8 @@ import { UpdateDemandComponent } from './update-demand/update-demand.component';
 import { ViewSingleDemandComponent } from './view-single-demand/view-single-demand.component';
 import { TrendsComponent } from './trends/trends.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { AuditsComponent } from './audits/audits.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AddDemandComponent,
     UpdateDemandComponent,
     ViewSingleDemandComponent,
-    TrendsComponent
+    TrendsComponent,
+    AuditsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     HttpClientModule,
     ChartsModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger', // set defaults here
+    }),
   ],
   providers: [
     {

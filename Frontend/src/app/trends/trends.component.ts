@@ -15,6 +15,7 @@ export class TrendsComponent implements OnInit {
   public trendsLocation!: { [x: string]: any; };
   public trendsSkills!: { [x: string]: any; };
   
+  public year: String = "2021";
 
   barChartOptions: ChartOptions = {
     responsive: true,
@@ -39,12 +40,13 @@ export class TrendsComponent implements OnInit {
   barChartPlugins = [];
   barChartColors: Colors[] = [{ 
     backgroundColor:["#003f5c", "#58508d", "#bc5090", "#ff6361", "#ffa600"],
-    borderWidth:[2,2,2,2,2],
-    borderColor: "#000000"
+    borderWidth:3
   }];
 
   barChartColorsSkills: Colors[] = [{ 
-    backgroundColor: ['#00429d', '#2b57a7', '#426cb0', '#5681b9', '#6997c2', '#7daeca', '#93c4d2', '#abdad9', '#caefdf', '#ffffe0']
+    backgroundColor: 
+    ['#00429d', '#3762ac', '#5185ba', '#66a9c7', '#77cfd2', '#3ffeb9', '#5bfcc6', '#6ffbd3', '#80f9e0', '#98f5f5'],
+    borderWidth: 2
   }];
 
   barChartData: ChartDataSets[] = [
@@ -69,7 +71,7 @@ export class TrendsComponent implements OnInit {
   }
 
   getDemandsByLoc(){
-    this.trendservice.getDemandsByLocaction().subscribe(
+    this.trendservice.getDemandsByLocaction(this.year).subscribe(
       (data) => {
         this.trendsLocation = data;
         Object.keys(this.trendsLocation).forEach((key) => {
@@ -87,7 +89,7 @@ export class TrendsComponent implements OnInit {
   }
 
   getDemandsBySkills(){
-    this.trendservice.getDemandsBySkills().subscribe(
+    this.trendservice.getDemandsBySkills(this.year).subscribe(
       (data) => {
         this.trendsSkills = data;
         Object.keys(this.trendsSkills).forEach((key) => {
@@ -102,11 +104,15 @@ export class TrendsComponent implements OnInit {
         })
       }
     )
-    console.log(this.barChartDataSkills);
   }
 
   goToLogin(){
     this.router.navigate(['']);
+  }
+
+  onSubmit(){
+    this.getDemandsByLoc();
+    this.getDemandsBySkills();
   }
 
 }

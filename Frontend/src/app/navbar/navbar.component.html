@@ -1,18 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
-    <img src="../../assets/Images/accolite_logo.jpeg" width="150px"  alt="Accolite India">
+    <img src="../../assets/Images/accolite_logo.jpeg" width="160px"  alt="Accolite India">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto ml-4">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/addDemand" routerLinkActive="active">Add New Demand</a>
+        <a class="nav-link" style="font-size: 20px;" routerLink="/addDemand" routerLinkActive="active">New Demand <i class="fas fa-plus"></i></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/trends" routerLinkActive="active">Trends</a>
+      <li class="nav-item ml-2">
+        <a class="nav-link" style="font-size: 20px;" routerLink="/trends" routerLinkActive="active">Trends <i class="fas fa-poll"></i></a>
+      </li>
+      <li class="nav-item ml-2">
+        <a class="nav-link" style="font-size: 20px;" routerLink="/audits" routerLinkActive="active">Audits <i class="fas fa-envelope-open-text"></i></a>
       </li>
     </ul>
     <button class="btn btn-outline-dark ml-2" (click)="signOut()">Sign Out</button>

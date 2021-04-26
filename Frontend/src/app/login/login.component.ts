@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       (user) => {
         this.user = user;
         localStorage.setItem('user',user.email);
-        console.log(user);
+        localStorage.setItem('username',user.name);
         this.goToHome();
       }
     )

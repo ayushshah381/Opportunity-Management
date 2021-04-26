@@ -1,6 +1,17 @@
 <app-navbar></app-navbar>
 <br>
-<h3 style="text-align: center;">TRENDING NOW</h3>
+<h3 style="text-align: center;">TRENDS ACROSS THE YEARS</h3>
+<br>
+<form class="form form-inline" style="margin-left: 10%;">
+      <label for="Year">Choose a year: </label>
+      <select [(ngModel)]="year" name="year" id="Year" style="margin-left: 7px;">
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+      </select>
+<button class="btn btn-light" style="margin-left: 5px;" type="submit" (click)="onSubmit()"><i class="fas fa-search"></i></button>
+</form>
 <br>
 <br>
 <div class="container">

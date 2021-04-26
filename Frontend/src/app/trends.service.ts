@@ -10,11 +10,11 @@ export class TrendsService {
 
   constructor(private http: HttpClient) { }
 
-  public getDemandsByLocaction(){
-    return this.http.get<any>(`${this.baseUrl}/trends/location`);
+  public getDemandsByLocaction(year: String){
+    return this.http.get<any>(`${this.baseUrl}/trends/location/${year}`);
   }
 
-  public getDemandsBySkills(){
-    return this.http.get<any>(`${this.baseUrl}/trends/skills`);
+  public getDemandsBySkills(year: String){
+    return this.http.get<any>(`${this.baseUrl}/trends/skills/${year}`);
   }
 }

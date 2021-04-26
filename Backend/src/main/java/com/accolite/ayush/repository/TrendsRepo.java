@@ -17,12 +17,12 @@ public class TrendsRepo {
 	@Autowired
 	JdbcTemplate jdbctemplate;
 	
-	public List<List<?>> getDemandsByLocation()
+	public List<List<?>> getDemandsByLocation(String year)
 	{	
 		List<List<?>> mp = new ArrayList<>();
 		List<String> locations = new ArrayList<>();
 		List<Integer> count = new ArrayList<>();	
-		String sqlquery = "SELECT location,count(*) FROM demands GROUP BY location";
+		String sqlquery = "SELECT location,count(*) FROM demands WHERE endDate LIKE '" + year + "%' GROUP BY location";
 		jdbctemplate.query(sqlquery,new RowCallbackHandler() {
 			@Override
 			public void processRow(ResultSet rs) throws SQLException {
@@ -39,12 +39,12 @@ public class TrendsRepo {
 		return mp;
 	}
 	
-	public List<List<?>> getDemandsBySkills()
+	public List<List<?>> getDemandsBySkills(String year)
 	{	
 		List<List<?>> mp = new ArrayList<>();
 		List<String> skills = new ArrayList<>();
 		List<Integer> count = new ArrayList<>();	
-		String sqlquery = "SELECT skills,count(*) FROM demands GROUP BY skills ORDER BY count(*) DESC";
+		String sqlquery = "SELECT skills,count(*) FROM demands WHERE endDate LIKE '" + year + "%' GROUP BY skills ORDER BY count(*) DESC LIMIT 10";
 		jdbctemplate.query(sqlquery,new RowCallbackHandler() {
 			@Override
 			public void processRow(ResultSet rs) throws SQLException {

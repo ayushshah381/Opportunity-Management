@@ -1,8 +1,10 @@
+import { AuditsService } from './../audits.service';
 import { Router } from '@angular/router';
 import { Demand } from './../demand';
 import { Component, OnInit } from '@angular/core';
 import { DemandsService } from '../demands.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Audit } from '../audit';
 
 @Component({
   selector: 'app-demands',
@@ -12,9 +14,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class DemandsComponent implements OnInit {
 
   public demands: Demand[] = [];
+  public audit: Audit = <any>{
+    aid : 1,
+    username: localStorage.getItem('username'),
+    useremail: localStorage.getItem('user'),
+    action: "",
+    date: new Date().toDateString() + " "+ new Date().toTimeString().substring(0,8)
+  };
+  
+  popoverTitle = "Delete Demand";
+  popoverMessage = "Are you sure you want to delete this?";
+  cancelClicked = false;
   
   constructor(private mydemandservice: DemandsService,
-    private router: Router) { }
+    private router: Router,
+    private auditservice: AuditsService) { }
 
   ngOnInit(): void {
     this.getDemands();
@@ -33,6 +47,8 @@ export class DemandsComponent implements OnInit {
 
 
   deleteDemands(id: number): void{
+    this.audit.action = "Deleted a demand";
+    this.auditservice.addAudit(this.audit).subscribe();
     this.mydemandservice.deleteDemand(id).subscribe(
       (data)=>{
         this.getDemands();

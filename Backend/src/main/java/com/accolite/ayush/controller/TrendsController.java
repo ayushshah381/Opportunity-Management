@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,15 +18,15 @@ public class TrendsController {
 	@Autowired
 	TrendsRepo trepo;
 	
-	@GetMapping(path="location")
+	@GetMapping(path="location/{year}")
 	@ResponseBody
-	public List<List<?>> getDemandsByLoc(){
-		return trepo.getDemandsByLocation();
+	public List<List<?>> getDemandsByLoc(@PathVariable("year") String year){
+		return trepo.getDemandsByLocation(year);
 	}
 	
-	@GetMapping(path="skills")
+	@GetMapping(path="skills/{year}")
 	@ResponseBody
-	public List<List<?>> getDemandsBySkills(){
-		return trepo.getDemandsBySkills();
+	public List<List<?>> getDemandsBySkills(@PathVariable("year") String year){
+		return trepo.getDemandsBySkills(year);
 	}
 }

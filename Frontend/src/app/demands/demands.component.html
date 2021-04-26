@@ -3,14 +3,14 @@
 </h2>
 
 <br>
-<form class="form-inline my-2 my-lg-0 ml-4">
+<form class="form-inline my-2 my-lg-0 " style="margin-left: 5%;">
   <input class="form-control mr-sm-2" 
   (ngModelChange)="searchDemands(key.value)" #key="ngModel" ngModel name="key"
   type="search" placeholder="Search" aria-label="Search">
 </form>
 <br>
 <br>
-<table class = "table table-striped">
+<table class = "table table-striped table-bordered table-hover" style="width: 90%; margin-left:5%;">
     <thead>
         <tr>
             <th>ID</th>
@@ -32,7 +32,11 @@
             <td>{{demand.skills}}</td>
             <td>
                 <button class = "btn btn-info" (click)="updateDemands(demand.did)"> Update</button>
-                <button class = "btn btn-danger" style="margin-left: 10px" (click)="deleteDemands(demand.did)"> Delete</button>
+                <button class = "btn btn-danger" style="margin-left: 10px" mwlConfirmationPopover
+                [popoverTitle]="popoverTitle"
+                [popoverMessage]="popoverMessage"
+                placement="left"
+                (cancel)="cancelClicked = true" (confirm)="deleteDemands(demand.did)"> Delete</button>
                 <button class = "btn btn-info" style="margin-left: 10px" (click)="viewDemand(demand.did)"> View</button>
             </td>
         </tr>
