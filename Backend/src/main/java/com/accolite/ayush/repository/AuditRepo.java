@@ -9,13 +9,15 @@ import com.accolite.ayush.rowmapper.AuditRowMapper;
 
 import java.util.*;
 
+import com.accolite.ayush.exception.*;
+
 @Component
 public class AuditRepo {
 	
 	@Autowired
 	JdbcTemplate jdbctemplate;
 	
-	public List<Audit> getAllAudits()
+	public List<Audit> getAllAudits() throws NoRecordFound
 	{
 		List<Audit> list = jdbctemplate.query("SELECT * from audits", new AuditRowMapper());
 		return list;

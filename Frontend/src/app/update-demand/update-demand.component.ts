@@ -42,7 +42,7 @@ export class UpdateDemandComponent implements OnInit {
   }
 
   onSubmit(){
-    this.audit.action = "Updated a demand";
+    this.audit.action = "Updated a demand with id: "+this.id;
     this.auditservice.addAudit(this.audit).subscribe();
     this.demandservice.updateDemand(this.demand,this.id).subscribe(
       (data) => {

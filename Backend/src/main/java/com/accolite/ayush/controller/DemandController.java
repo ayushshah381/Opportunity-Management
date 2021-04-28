@@ -4,11 +4,9 @@ package com.accolite.ayush.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.accolite.ayush.exception.NoRecordFound;
 import com.accolite.ayush.models.Demand;
 import com.accolite.ayush.repository.DemandRepo;
 
@@ -31,16 +30,20 @@ public class DemandController {
 	@Autowired
 	DemandRepo demandrepo;
 	
+	private static final Logger logger = LoggerFactory.getLogger(DemandController.class);
+	
 	@GetMapping(path="viewAll")
-	public List<Demand> getAllDemands(){
+	public List<Demand> getAllDemands() throws NoRecordFound{
+		logger.info("DemandController - getAllDemands()");
 		List<Demand> demandList = new ArrayList<>();
 		demandList = demandrepo.getAllDemands();
 		return demandList;
 	}
 	
 	@GetMapping(path="{id}")
-	public Demand getDemandById(@PathVariable int id)
+	public Demand getDemandById(@PathVariable int id) throws NoRecordFound
 	{
+		logger.info("DemandController - getDemandById()");
 		Demand d = demandrepo.getDemandById(id);
 		return d;
 	}
@@ -49,21 +52,24 @@ public class DemandController {
 	@ResponseBody
 	public int addDemand(@RequestBody Demand d)
 	{
+		logger.info("DemandController - addDemand()");
 		int val = demandrepo.addDemand(d);
 		return val;
 	}
 	
 	@PutMapping(path="update/{id}")
     @ResponseBody
-    public int updateOpportunity(@RequestBody Demand d,@PathVariable("id") int id){
-        int val = demandrepo.updateDemand(d,id);
+    public int updateDemand(@RequestBody Demand d,@PathVariable("id") int id){
+		logger.info("DemandController - updateDemand()");
+		int val = demandrepo.updateDemand(d,id);
 		return val;
     }
 	
 	@DeleteMapping(path="delete/{id}")
 	@ResponseBody
-	public int deleteOpportunity(@PathVariable("id") int id)
+	public int deleteDemand(@PathVariable("id") int id)
 	{
+		logger.info("DemandController - deleteDemand()");
 		int index = demandrepo.deleteDemand(id);
 		return index;
 	}

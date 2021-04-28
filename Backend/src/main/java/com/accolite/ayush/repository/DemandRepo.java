@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.accolite.ayush.exception.NoRecordFound;
 import com.accolite.ayush.models.Demand;
 import com.accolite.ayush.rowmapper.DemandRowMapper;
 
@@ -16,7 +17,7 @@ public class DemandRepo {
 	@Autowired
 	private JdbcTemplate jdbctemplate;
 	
-	public List<Demand> getAllDemands()
+	public List<Demand> getAllDemands() throws NoRecordFound
 	{
 		List<Demand> demandList;
 		String sqlquery = "SELECT * FROM demands";
@@ -24,7 +25,7 @@ public class DemandRepo {
 		return demandList;
 	}
 	
-	public Demand getDemandById(int id)
+	public Demand getDemandById(int id) throws NoRecordFound
 	{
 		Demand demand;
 		String sqlquery = "SELECT * FROM demands WHERE id="+id;
@@ -52,5 +53,6 @@ public class DemandRepo {
 		int rowsAffected = jdbctemplate.update(sqlquery, new Object[] {id});
 		return rowsAffected;
 	}
+	
 
 }

@@ -47,7 +47,7 @@ export class DemandsComponent implements OnInit {
 
 
   deleteDemands(id: number): void{
-    this.audit.action = "Deleted a demand";
+    this.audit.action = "Deleted a demand with id: "+id;
     this.auditservice.addAudit(this.audit).subscribe();
     this.mydemandservice.deleteDemand(id).subscribe(
       (data)=>{

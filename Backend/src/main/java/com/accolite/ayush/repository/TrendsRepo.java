@@ -11,13 +11,15 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Component;
 
+import com.accolite.ayush.exception.NoRecordFound;
+
 @Component
 public class TrendsRepo {
 
 	@Autowired
 	JdbcTemplate jdbctemplate;
 	
-	public List<List<?>> getDemandsByLocation(String year)
+	public List<List<?>> getDemandsByLocation(String year) throws NoRecordFound
 	{	
 		List<List<?>> mp = new ArrayList<>();
 		List<String> locations = new ArrayList<>();
@@ -39,7 +41,7 @@ public class TrendsRepo {
 		return mp;
 	}
 	
-	public List<List<?>> getDemandsBySkills(String year)
+	public List<List<?>> getDemandsBySkills(String year) throws NoRecordFound
 	{	
 		List<List<?>> mp = new ArrayList<>();
 		List<String> skills = new ArrayList<>();
