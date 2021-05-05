@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<br>
+<h2 style="text-align: center;">
+    All Demands
+  </h2>
+  
+  <br>
+  
+  <div class="row" style="margin-left: 4%;">
+      <!-- <div class="col">
+          <form class="form-inline my-2 my-lg-0 " style="margin-left: 5%;">
+              <input class="form-control mr-sm-2" 
+              (ngModelChange)="searchDemands(key.value)" #key="ngModel" ngModel name="key"
+              type="search" placeholder="Search" aria-label="Search">
+            </form>
+            <br>
+      </div> -->
+  
+      <div class="col">
+          <form class="form-inline my-2 my-lg-0 ">
+              Filter By:
+              <input class="testform" style="margin-left: 2%;" type="text" [(ngModel)]="filterLoc" name="filterLoc" placeholder="Location" />    
+              <input class="testform" style="margin-left: 2%;" type="text" [(ngModel)]="filterSkill" name="filterSkill" placeholder="Skills" />
+              <button style="margin-left:2%" class="btn btn-outline-dark" type="submit" (click)="onFilterSubmit()">Filter</button>    
+          </form>
+      </div>
+  </div>
+  
+  <br>
+  <table class = "table table-striped table-bordered table-hover" style="width: 90%; margin-left:5%;">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>ED Name</th>
+              <th>ED Email</th>
+              <th>Description</th>
+              <th>Location</th>
+              <th>Skills</th>
+              <th>End Date</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor = "let demand of demands" >
+              <td>{{demand.did}}</td>
+              <td>{{demand.ed_name}}</td>
+              <td>{{demand.ed_email}}</td>
+              <td>{{demand.description}}</td>
+              <td>{{demand.location}}</td>
+              <td>{{demand.skills}}</td>
+              <td>{{demand.endDate}}</td>
+              <td>
+                  <button class = "btn btn-info" style="margin-left: 10px" (click)="viewDemand(demand.did)"> Audits</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>

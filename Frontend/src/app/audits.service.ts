@@ -18,6 +18,10 @@ export class AuditsService {
 
   public addAudit(audit: Audit): Observable<Audit> {
     return this.http.post<Audit>(`${this.baseUrl}/audit/add`,audit);
-  } 
+  }
+  
+  public getAuditByDemandId(id: number): Observable<Audit[]>{
+    return this.http.get<any>(`${this.baseUrl}/audit/byDemandId/${id}`);
+  }
 
 }

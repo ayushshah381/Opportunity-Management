@@ -17,10 +17,6 @@ export class ViewSingleDemandComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if(!localStorage.getItem('user'))
-    {
-      this.goToLogin();
-    }
     this.id = this.route.snapshot.params['id'];
     this.demandservice.getDemandById(this.id).subscribe(
       (data) => {

@@ -19,8 +19,11 @@ export class DemandsComponent implements OnInit {
     username: localStorage.getItem('username'),
     useremail: localStorage.getItem('user'),
     action: "",
-    date: new Date().toDateString() + " "+ new Date().toTimeString().substring(0,8)
+    date: new Date().toDateString() + " "+ new Date().toTimeString().substring(0,8),
+    demandId: 1
   };
+  public filterLoc: String = "";
+  public filterSkill: String = "";
   
   popoverTitle = "Delete Demand";
   popoverMessage = "Are you sure you want to delete this?";
@@ -35,7 +38,7 @@ export class DemandsComponent implements OnInit {
   }
 
    getDemands(): void{
-    this.mydemandservice.getDemands().subscribe(
+    this.mydemandservice.getCurrentDemands().subscribe(
       (response: Demand[]) => {
         this.demands = response;
       },
@@ -47,7 +50,8 @@ export class DemandsComponent implements OnInit {
 
 
   deleteDemands(id: number): void{
-    this.audit.action = "Deleted a demand with id: "+id;
+    this.audit.action = "Deleted a demand";
+    this.audit.demandId = id;
     this.auditservice.addAudit(this.audit).subscribe();
     this.mydemandservice.deleteDemand(id).subscribe(
       (data)=>{
@@ -82,6 +86,25 @@ export class DemandsComponent implements OnInit {
     if(results.length === 0 || !key)
     {
       this.getDemands();
+    }
+  }
+
+  onFilterSubmit(){
+    if(this.filterLoc=="" && this.filterSkill=="")
+    {
+      this.getDemands();
+    }
+    else if((this.filterLoc=="" && this.filterSkill!="") || (this.filterLoc!="" && this.filterSkill==""))
+    {
+      alert("Please fill all the details for filtering!");
+    }
+    else
+    {
+      this.mydemandservice.getCurrentDemandFilter(this.filterLoc,this.filterSkill).subscribe(
+        (data) => {
+          this.demands = data;
+        }
+      )
     }
   }
 

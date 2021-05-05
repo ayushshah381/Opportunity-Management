@@ -2,6 +2,14 @@
 <br>
 <h3 style="text-align: center;">AUDITS</h3>
 <br>
+<div class="col">
+    <form class="form-inline my-2 my-lg-0 " style="margin-left: 5%;">
+        <input class="form-control mr-sm-2" 
+        (ngModelChange)="searchAudits(key.value)" #key="ngModel" ngModel name="key"
+        type="search" placeholder="Search" aria-label="Search">
+    </form> 
+    <br>
+</div>
 <table class = "table table-striped table-bordered table-hover" style="width: 90%; margin-left:5%;">
     <thead>
         <tr>
@@ -9,6 +17,7 @@
             <th>Username</th>
             <th>User Email</th>
             <th>Action</th>
+            <th>Demand Id</th>
             <th>Date/Time</th>
         </tr>
     </thead>
@@ -18,6 +27,7 @@
             <td>{{audit.username}}</td>
             <td>{{audit.useremail}}</td>
             <td>{{audit.action}}</td>
+            <td>{{audit.demandId}}</td>
             <td>{{audit.date}}</td>
         </tr>
     </tbody>

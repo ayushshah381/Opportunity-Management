@@ -36,15 +36,69 @@ public class TrendsControllerTest {
 	@Test
 	public void ItShouldGetDemandsByLocation() throws Exception
 	{
-		Mockito.when(trendsrepo.getDemandsByLocation("2021")).thenReturn(new ArrayList<>());
-		mockMvc.perform(get("/trends/location/2021")).andExpect(status().isOk());
+		Mockito.when(trendsrepo.getDemandsByLocation()).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/trends/location")).andExpect(status().isOk());
 	}
 	
 	@Test
 	public void ItShouldGetDemandsBySkills() throws Exception
 	{
-		Mockito.when(trendsrepo.getDemandsBySkills("2021")).thenReturn(new ArrayList<>());
-		mockMvc.perform(get("/trends/skills/2021")).andExpect(status().isOk());
+		Mockito.when(trendsrepo.getDemandsBySkills()).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/trends/skills")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetAllLocations() throws Exception
+	{
+		Mockito.when(trendsrepo.getDistinctLocations()).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/trends/distinctLocations")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetAllSkills() throws Exception
+	{
+		Mockito.when(trendsrepo.getDistinctSkills()).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/trends/distinctSkills")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetAllYears() throws Exception
+	{
+		Mockito.when(trendsrepo.getDistinctYears()).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/trends/distinctYears")).andExpect(status().isOk());
+	}
+
+	
+	@Test
+	public void ItShouldGetTrendsLocation() throws Exception
+	{
+		mockMvc.perform(get("/trends/yearLocations")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetTrendsSkills() throws Exception
+	{
+		mockMvc.perform(get("/trends/yearSkills")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetCurrentDistinctLocations() throws Exception
+	{
+		Mockito.when(trendsrepo.getCurrentDistinctLocations()).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/trends/currentDistinctLocations")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetCurrentDistinctSkills() throws Exception
+	{
+		Mockito.when(trendsrepo.getCurrentDistinctSkills()).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/trends/currentDistinctSkills")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetCurrentVacancy() throws Exception
+	{
+		mockMvc.perform(get("/trends/currentVacancy")).andExpect(status().isOk());
 	}
 
 

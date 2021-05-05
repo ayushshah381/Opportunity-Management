@@ -19,14 +19,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-    });
-    
-    if(!localStorage.getItem('user'))
-    {
-      this.goToLogin();
-    }
+    // this.authService.authState.subscribe((user) => {
+    //   this.user = user;
+    // });
     
   }
 

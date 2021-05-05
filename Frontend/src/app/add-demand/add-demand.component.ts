@@ -13,27 +13,41 @@ import { Audit } from '../audit';
 })
 export class AddDemandComponent implements OnInit {
 
+  todayDate: String =  new Date().toISOString().slice(0, 10);
+
   public demand: Demand = <any>{};
   public audit: Audit = <any>{
     aid : 1,
     username: localStorage.getItem('username'),
     useremail: localStorage.getItem('user'),
     action: "",
-    date: new Date().toDateString() + " "+ new Date().toTimeString().substring(0,8)
+    date: new Date().toDateString() + " "+ new Date().toTimeString().substring(0,8),
+    demandId: 1
   };
   constructor(private demandService: DemandsService,
     private router: Router,
     private auditservice: AuditsService) { }
 
   ngOnInit(): void {
-    if(!localStorage.getItem('user'))
-    {this.goToLogin();}
+    // console.log(this.todayDate);
   }
 
   saveDemand(){
     this.demandService.addDemand(this.demand).subscribe(
-      (data) => {
-        this.goToHome();
+        (data) => {
+          this.audit.action = "New Demand added";
+          this.demandService.getLatestId().subscribe(
+          (data2) => {
+            this.audit.demandId = data2.did;
+            console.log(data2.did);
+            console.log(this.audit);
+            this.auditservice.addAudit(this.audit).subscribe(
+              (data) => {
+                this.goToHome();
+              }
+            )
+          }
+        );
       }
     )
   }
@@ -49,10 +63,11 @@ export class AddDemandComponent implements OnInit {
   }
 
   onSubmit(){
-    this.audit.action = "New Demand added";
-    this.auditservice.addAudit(this.audit).subscribe(
-      (data) => {console.log(data);}
-    )
-    this.saveDemand();
+    if(this.demand.ed_name=="" || this.demand.ed_email=="" || this.demand.endDate==null || this.demand.location=="" || this.demand.skills=="" || this.demand.vacancy==null)
+    {alert("Please fill all details!");}
+    else
+    {
+      this.saveDemand();
+    }
   }
 }

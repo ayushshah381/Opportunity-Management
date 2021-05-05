@@ -9,33 +9,33 @@ public class Audit {
 	 String useremail;
 	 String action;
 	 String date;
-	
-	 public Audit() {}
+	 int demandId;
 	 
-	 public Audit(int aid, String username, String useremail, String action, String date) {
+	 public Audit() {}
+
+	 
+	public Audit(int aid, String username, String useremail, String action, String date, int demandId) {
 		super();
 		this.aid = aid;
 		this.username = username;
 		this.useremail = useremail;
 		this.action = action;
-		Calendar calobj = Calendar.getInstance();
-		this.date = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(Calendar.getInstance().getTime());;
+		this.date = date;
+		this.demandId = demandId;
 	}
-	 
-	 public Audit(String username, String useremail, String action, String date) {
-			super();
-			this.username = username;
-			this.useremail = useremail;
-			this.action = action;
-			Calendar calobj = Calendar.getInstance();
-			this.date = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(Calendar.getInstance().getTime());;
-		}
+	
+	
 
-	@Override
-	public String toString() {
-		return "Audit [aid=" + aid + ", username=" + username + ", useremail=" + useremail + ", action=" + action
-				+ ", date=" + date + "]";
+
+	public Audit(String username, String useremail, String action, String date, int demandId) {
+		super();
+		this.username = username;
+		this.useremail = useremail;
+		this.action = action;
+		this.date = date;
+		this.demandId = demandId;
 	}
+
 
 	public int getAid() {
 		return aid;
@@ -75,8 +75,15 @@ public class Audit {
 
 	public void setDate(String date) {
 		this.date = date;
-	} 
-	 
+	}
+
+	public int getDemandId() {
+		return demandId;
+	}
+
+	public void setDemandId(int demandId) {
+		this.demandId = demandId;
+	}
 	 
 
 }

@@ -31,13 +31,20 @@ public class AuditControllerTest {
 	@Autowired
 	private ObjectMapper objectMapper;
 	
-	Audit demoAudit = new Audit(100,"Ayush Shah","a@gmail.com","Action performed","Current Date");
+	Audit demoAudit = new Audit(100,"Ayush Shah","a@gmail.com","Action performed","Current Date",17);
 	
 	@Test
 	public void ItShouldGetAllAudits() throws Exception
 	{
 		Mockito.when(auditrepo.getAllAudits()).thenReturn(new ArrayList<>());
 		mockMvc.perform(get("/audit/viewAll")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetAuditByDemandId() throws Exception
+	{
+		Mockito.when(auditrepo.getAuditByDemandId(91)).thenReturn(new ArrayList<>());
+		mockMvc.perform(get("/audit/byDemandId/91")).andExpect(status().isOk());
 	}
 	
 	@Test

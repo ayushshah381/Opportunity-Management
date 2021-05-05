@@ -47,5 +47,14 @@ public class AuditRepoTest {
 		int res2 = auditrepo.addAudit(new Audit());
 		Assert.assertEquals(res1,res2);
 	}
+	
+	@Test
+	public void ItShouldGetAuditByDemandId() throws NoRecordFound
+	{
+		ArrayList<Audit> list1 = new ArrayList<>();
+		Mockito.when(jdbctemplate.query(Mockito.anyString(), Mockito.any(AuditRowMapper.class))).thenReturn(list1);
+		List<Audit> list2 = auditrepo.getAuditByDemandId(91);
+		Assert.assertEquals(list1.size(),list2.size());
+	}
 
 }

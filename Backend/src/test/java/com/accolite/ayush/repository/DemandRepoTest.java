@@ -39,6 +39,33 @@ public class DemandRepoTest {
 	}
 	
 	@Test
+	public void ItShouldGetCurrentDemands() throws NoRecordFound
+	{
+		ArrayList<Demand> list1 = new ArrayList<>();
+		Mockito.when(jdbctemplate.query(Mockito.anyString(), Mockito.any(DemandRowMapper.class))).thenReturn(list1);
+		List<Demand> list2 = demandrepo.getCurrentDemands();
+		Assert.assertEquals(list1.size(),list2.size());
+	}
+	
+	@Test
+	public void ItShouldGetDemandsFilter() throws NoRecordFound
+	{
+		ArrayList<Demand> list1 = new ArrayList<>();
+		Mockito.when(jdbctemplate.query(Mockito.anyString(), Mockito.any(DemandRowMapper.class))).thenReturn(list1);
+		List<Demand> list2 = demandrepo.getDemandsFilter("Mumbai","Java");
+		Assert.assertEquals(list1.size(),list2.size());
+	}
+	
+	@Test
+	public void ItShouldGetCurrentDemandsFilter() throws NoRecordFound
+	{
+		ArrayList<Demand> list1 = new ArrayList<>();
+		Mockito.when(jdbctemplate.query(Mockito.anyString(), Mockito.any(DemandRowMapper.class))).thenReturn(list1);
+		List<Demand> list2 = demandrepo.getCurrentDemandsFilter("Mumbai","Java");
+		Assert.assertEquals(list1.size(),list2.size());
+	}
+	
+	@Test
 	public void ItShouldGetDemandById() throws NoRecordFound
 	{
 		Demand d = new Demand();
@@ -76,6 +103,15 @@ public class DemandRepoTest {
 		int res2 = demandrepo.deleteDemand(25);
 		Assert.assertEquals(res1,res2);
 		
+	}
+	
+	@Test
+	public void ItShouldGetLatestDemand() throws NoRecordFound
+	{
+		Demand d = new Demand();
+		Mockito.when(jdbctemplate.queryForObject(Mockito.anyString(),Mockito.any(DemandRowMapper.class))).thenReturn(d);
+		Demand d2 = demandrepo.getLatestDemand();
+		Assert.assertEquals(d,d2);
 	}
 	
 }

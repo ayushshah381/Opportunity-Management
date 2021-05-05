@@ -48,6 +48,39 @@ public class DemandController {
 		return d;
 	}
 	
+	@GetMapping(path="current")
+	public List<Demand> getCurrentDemands() throws NoRecordFound
+	{
+		logger.info("Demand Controller - getCurrentDemands()");
+		List<Demand> d = demandrepo.getCurrentDemands();
+		return d;
+	}
+	
+	@GetMapping(path="latest")
+	public Demand getLatestDemand() throws NoRecordFound
+	{
+		logger.info("Demand Controller - getLatestDemands()");
+		Demand d = demandrepo.getLatestDemand();
+		return d;
+	}
+	
+	
+	@GetMapping(path="{loc}/{skill}")
+	public List<Demand> getDemandFilter(@PathVariable String loc,@PathVariable String skill) throws NoRecordFound
+	{
+		logger.info("DemandController - getDemandFilter()");
+		List<Demand> d = demandrepo.getDemandsFilter(loc, skill);
+		return d;
+	}
+	
+	@GetMapping(path="current/{loc}/{skill}")
+	public List<Demand> getCurrentDemandFilter(@PathVariable String loc,@PathVariable String skill) throws NoRecordFound
+	{
+		logger.info("DemandController - getCurrentDemandFilter()");
+		List<Demand> d = demandrepo.getCurrentDemandsFilter(loc, skill);
+		return d;
+	}
+	
 	@PostMapping(path="add",produces=MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public int addDemand(@RequestBody Demand d)

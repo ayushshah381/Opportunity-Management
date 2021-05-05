@@ -17,6 +17,7 @@ public class AuditRowMapper implements RowMapper<Audit> {
 		a.setUseremail(rs.getString("useremail"));
 		a.setAction(rs.getString("actionperformed"));
 		a.setDate(rs.getString("currdate"));
+		a.setDemandId(rs.getInt("demandId"));
 		return a;
 	}
 

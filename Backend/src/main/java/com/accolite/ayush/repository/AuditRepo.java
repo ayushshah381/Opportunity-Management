@@ -25,8 +25,14 @@ public class AuditRepo {
 	
 	public int addAudit(Audit a)
 	{
-		String sqlquery = "INSERT INTO audits(username,useremail,actionperformed,currdate) VALUES(?,?,?,?)";
-		int rowsAffected = jdbctemplate.update(sqlquery,new Object[] {a.getUsername(),a.getUseremail(),a.getAction(),a.getDate()});
+		String sqlquery = "INSERT INTO audits(username,useremail,actionperformed,currdate,demandId) VALUES(?,?,?,?,?)";
+		int rowsAffected = jdbctemplate.update(sqlquery,new Object[] {a.getUsername(),a.getUseremail(),a.getAction(),a.getDate(),a.getDemandId()});
 		return rowsAffected;
+	}
+	
+	public List<Audit> getAuditByDemandId(int id)
+	{
+		List<Audit> list = jdbctemplate.query("SELECT * from audits WHERE demandId="+id, new AuditRowMapper());
+		return list;
 	}
 }

@@ -21,6 +21,8 @@ import { TrendsComponent } from './trends/trends.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AuditsComponent } from './audits/audits.component';
+import { AllDemandsComponent } from './all-demands/all-demands.component';
+import { SingleauditComponent } from './singleaudit/singleaudit.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { AuditsComponent } from './audits/audits.component';
     UpdateDemandComponent,
     ViewSingleDemandComponent,
     TrendsComponent,
-    AuditsComponent
+    AuditsComponent,
+    AllDemandsComponent,
+    SingleauditComponent
   ],
   imports: [
     BrowserModule,

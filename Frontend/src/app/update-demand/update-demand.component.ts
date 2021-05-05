@@ -19,7 +19,8 @@ export class UpdateDemandComponent implements OnInit {
     username: localStorage.getItem('username'),
     useremail: localStorage.getItem('user'),
     action: "",
-    date: new Date().toDateString() + " "+ new Date().toTimeString().substring(0,8)
+    date: new Date().toDateString() + " "+ new Date().toTimeString().substring(0,8),
+    demandId: 1
   };
 
   constructor( private demandservice:DemandsService,
@@ -28,25 +29,20 @@ export class UpdateDemandComponent implements OnInit {
     private auditservice: AuditsService) { }
 
   ngOnInit(): void {
-    if(!localStorage.getItem('user'))
-    {
-      this.goToLogin();
-    }
     this.id = this.route.snapshot.params['id'];
     this.demandservice.getDemandById(this.id).subscribe(
       (data) => {
         this.demand = data;
-        console.log(this.demand);
       }
     )
   }
 
   onSubmit(){
-    this.audit.action = "Updated a demand with id: "+this.id;
+    this.audit.action = "Updated a demand";
+    this.audit.demandId = this.id
     this.auditservice.addAudit(this.audit).subscribe();
     this.demandservice.updateDemand(this.demand,this.id).subscribe(
       (data) => {
-        console.log(data);
         this.goToHome();
       }
     )

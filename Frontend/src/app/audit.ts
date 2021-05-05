@@ -5,4 +5,5 @@ export interface Audit
     useremail: String;
     action: String;
     date: String;
+    demandId: number;
 }

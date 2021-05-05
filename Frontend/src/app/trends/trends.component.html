@@ -1,29 +1,17 @@
 <app-navbar></app-navbar>
 <br>
-<h3 style="text-align: center;">TRENDS ACROSS THE YEARS</h3>
-<br>
-<form class="form form-inline" style="margin-left: 10%;">
-      <label for="Year">Choose a year: </label>
-      <select [(ngModel)]="year" name="year" id="Year" style="margin-left: 7px;">
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-            <option value="2019">2019</option>
-            <option value="2018">2018</option>
-      </select>
-<button class="btn btn-light" style="margin-left: 5px;" type="submit" (click)="onSubmit()"><i class="fas fa-search"></i></button>
-</form>
 <br>
 <br>
 <div class="container">
         <div class="row">
           <div class="col">
-                <h6 style="text-align: center;">TRENDING JOINING LOCATIONS</h6>
+                <h6 style="text-align: center;">CURRENT TRENDING JOINING LOCATIONS</h6>
                 <br>
-                <div style="display: block; width: 500px; height: 500px;">
+                <div style="display: block; width: 500px;height:350px ">
                         <canvas baseChart 
                         [datasets]="barChartData"
                         [labels]="barChartLabels"
-                        [options]="barChartOptions"
+                        [options]="locbarChartOptions"
                         [plugins]="barChartPlugins"
                         [legend]="barChartLegend"
                         [chartType]="barChartType"
@@ -32,9 +20,9 @@
                 </div>
           </div>
           <div class="col">
-                <h6 style="text-align: center;">TRENDING SKILLS</h6>
+                <h6 style="text-align: center;">CURRENT TRENDING SKILLS</h6>
                 <br>
-                <div style="display: block; width: 500px; height: 500px;">
+                <div style="display: block; width: 500px; height: 350px;">
                         <canvas baseChart 
                         [datasets]="barChartDataSkills"
                         [labels]="barChartLabelsSkills"
@@ -48,4 +36,56 @@
                 </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <h6 style="text-align: center;">CURRENT VACANCIES</h6>
+            <br>
+            <div style="display: block; width:700px; height: 500px;">
+              <canvas baseChart
+                [datasets]="CurrbarChartData"
+                [labels]="CurrbarChartLabels"
+                [options]="CurrbarChartOptions"
+                [legend]="CurrbarChartLegend"
+                [chartType]="CurrbarChartType">
+              </canvas>
+          </div>
+          </div>
+          <div class="col"></div>
+        </div>
 </div>
+<h3 style="text-align: center;">TRENDS ACROSS THE YEARS</h3>
+<br>
+<br>
+<h5 style="text-align: center;">JOINING LOCATIONS</h5>
+<br>
+<div class="container">
+        <div style=" width: 1100px;">
+          <canvas baseChart
+            [datasets]="DistbarChartData"
+            [labels]="DistbarChartLabels"
+            [options]="barChartOptions"
+            [legend]="DistbarChartLegend"
+            [chartType]="DistbarChartType">
+          </canvas>
+      </div>
+
+      <br>
+      <br>
+      <h5 style="text-align: center;">SKILLS</h5>
+      <br>
+    <div>
+        <div style="width: 1100px; ">
+          <canvas baseChart
+            [datasets]="SkillDistbarChartData"
+            [labels]="SkillDistbarChartLabels"
+            [options]="barChartOptions"
+            [legend]="SkillDistbarChartLegend"
+            [chartType]="SkillDistbarChartType">
+          </canvas>
+        </div>
+    </div>
+  </div>
+
+<br>
+<br>

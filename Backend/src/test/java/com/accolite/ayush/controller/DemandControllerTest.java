@@ -45,12 +45,26 @@ public class DemandControllerTest {
 		mockMvc.perform(get("/demand/viewAll")).andExpect(status().isOk());
 	}
 	
+	@Test
+	public void ItShouldGetCurrentDemands() throws Exception
+	{
+		Mockito.when(demandrepo.getCurrentDemands()).thenReturn(new ArrayList<Demand>());
+		mockMvc.perform(get("/demand/current")).andExpect(status().isOk());
+	}
+	
 	
 	@Test
 	public void ItShouldGetDemandById() throws Exception
 	{
 		Mockito.when(demandrepo.getDemandById(1)).thenReturn(new Demand());
 		mockMvc.perform(get("/demand/1")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void ItShouldGetLatestDemand() throws Exception
+	{
+		Mockito.when(demandrepo.getLatestDemand()).thenReturn(new Demand());
+		mockMvc.perform(get("/demand/latest")).andExpect(status().isOk());
 	}
 	
 	
@@ -78,6 +92,18 @@ public class DemandControllerTest {
 		mockMvc.perform(delete("/demand/delete/26")).andExpect(status().isOk());
 	}
 	
+	@Test
+	public void ItShouldGetDemandFilter() throws Exception
+	{
+		Mockito.when(demandrepo.getDemandsFilter("Mumbai","Java")).thenReturn(new ArrayList<Demand>());
+		mockMvc.perform(get("/demand/Mumbai/Java")).andExpect(status().isOk());
+	}
 	
+	@Test
+	public void ItShouldGetCurrentDemandFilter() throws Exception
+	{
+		Mockito.when(demandrepo.getCurrentDemandsFilter("Mumbai","Java")).thenReturn(new ArrayList<Demand>());
+		mockMvc.perform(get("/demand/current/Mumbai/Java")).andExpect(status().isOk());
+	}
 
 }

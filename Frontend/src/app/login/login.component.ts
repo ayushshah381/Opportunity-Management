@@ -16,16 +16,10 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('user'))
-    {
-      this.goToHome();
-    }
-    else
-    {
+
       this.authService.authState.subscribe((user) => {
         this.user = user;
       });
-    }
   }
 
   signInWithGoogle(): void {
@@ -39,7 +33,7 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  signOut(): void {
+  signOut(): void { 
     this.authService.signOut();
     localStorage.clear();
   }

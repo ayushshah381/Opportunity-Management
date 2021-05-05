@@ -17,6 +17,22 @@ export class DemandsService {
     return this.http.get<any>(`${this.baseUrl}/demand/viewAll`);
   }
 
+  public getDemandFilter(loc: String,skill:String): Observable<Demand[]>{
+    return this.http.get<any>(`${this.baseUrl}/demand/${loc}/${skill}`);
+  }
+
+  public getCurrentDemands(): Observable<Demand[]> {
+    return this.http.get<any>(`${this.baseUrl}/demand/current`);
+  } 
+
+  public getCurrentDemandFilter(loc: String,skill:String): Observable<Demand[]>{
+    return this.http.get<any>(`${this.baseUrl}/demand/current/${loc}/${skill}`);
+  }
+  
+  public getLatestId(): Observable<Demand>{
+    return this.http.get<any>(`${this.baseUrl}/demand/latest`);
+  }
+
   public getDemandById(id: number): Observable<Demand>{
     return this.http.get<Demand>(`${this.baseUrl}/demand/${id}`);
   }
