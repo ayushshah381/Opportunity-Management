@@ -1,4 +1,4 @@
-                                                  OPPORTUNITY MANAGEMENT PORTAL
+                                       OPPORTUNITY MANAGEMENT PORTAL
                                                                       
 1. Landing Page
 
